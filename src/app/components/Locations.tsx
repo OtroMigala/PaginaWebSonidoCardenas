@@ -1,3 +1,5 @@
+import { MapPin } from 'lucide-react';
+
 const locations = [
   {
     city: 'Popayán',
@@ -18,7 +20,11 @@ export default function Locations() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {locations.map((location, index) => (
             <div key={index} className="bg-[#1A1A1A] p-8 rounded-lg border border-[#2A2A2A] text-center">
-              <div className="text-5xl mb-4">📍</div>
+              <div className="flex justify-center mb-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F97316] to-[#FBBF24] flex items-center justify-center">
+                  <MapPin className="w-7 h-7 text-[#0D0D0D]" />
+                </div>
+              </div>
               <h3 className="text-4xl mb-2 bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Bebas Neue' }}>
                 {location.city}
               </h3>
@@ -33,7 +39,7 @@ export default function Locations() {
         </div>
 
         {/* Map Placeholder */}
-        <div className="bg-[#1A1A1A] rounded-lg border border-[#2A2A2A] h-[400px] flex items-center justify-center">
+        <div className="bg-[#1A1A1A] rounded-lg border border-[#2A2A2A] h-[220px] sm:h-[320px] md:h-[400px] flex items-center justify-center">
           <div className="text-center text-[#2A2A2A]">
             <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />

@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 sm:py-0">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/60 via-[#0D0D0D]/80 to-[#0D0D0D]/95">
         <div className="absolute inset-0 bg-[#0D0D0D]">
@@ -29,8 +29,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Watermark */}
-      <div className="absolute top-20 left-10 text-[200px] font-bold opacity-5 bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent select-none" style={{ fontFamily: 'Bebas Neue' }}>
+      {/* Watermark - hidden on mobile to avoid content overlap */}
+      <div className="hidden sm:block absolute top-20 left-10 text-[200px] font-bold opacity-5 bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent select-none" style={{ fontFamily: 'Bebas Neue' }}>
         S
       </div>
 
@@ -38,36 +38,36 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`max-w-3xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Eyebrow */}
-          <div className="mb-6">
-            <span className="inline-block text-sm uppercase tracking-[0.3em] bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Inter' }}>
+          <div className="mb-4 sm:mb-6">
+            <span className="inline-block text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Inter' }}>
               ✦ SONIDO · LUCES · EVENTOS
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl text-[#F8FAFC] mb-6 leading-tight" style={{ fontFamily: 'Bebas Neue' }}>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-[#F8FAFC] mb-4 sm:mb-6 leading-[1.1]" style={{ fontFamily: 'Bebas Neue' }}>
             HACEMOS QUE TU EVENTO SEA INOLVIDABLE
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-[#9CA3AF] mb-10" style={{ fontFamily: 'Inter' }}>
+          <p className="text-base sm:text-lg md:text-xl text-[#9CA3AF] mb-6 sm:mb-10" style={{ fontFamily: 'Inter' }}>
             Amplificación profesional, luces, DJ, estructuras y organización integral de eventos en Popayán y Cali.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
             <a
               href="https://wa.me/573145483972?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] px-8 py-4 rounded-lg text-lg font-semibold hover:scale-105 transition-transform"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:scale-105 transition-transform"
               style={{ fontFamily: 'Inter' }}
             >
               <MessageCircle className="w-5 h-5" /> Escribir por WhatsApp
             </a>
             <button
               onClick={scrollToServices}
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#FBBF24] text-[#F8FAFC] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#FBBF24]/10 transition-colors"
+              className="inline-flex items-center justify-center gap-2 border-2 border-[#FBBF24] text-[#F8FAFC] px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-[#FBBF24]/10 transition-colors"
               style={{ fontFamily: 'Inter' }}
             >
               Ver Nuestros Servicios
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-6 text-sm text-[#9CA3AF]" style={{ fontFamily: 'Inter' }}>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-6 text-xs sm:text-sm text-[#9CA3AF]" style={{ fontFamily: 'Inter' }}>
             <div className="flex items-center gap-2">
               <Mic className="w-4 h-4 text-[#F97316]" />
               <span>+500 Eventos realizados</span>

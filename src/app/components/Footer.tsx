@@ -132,8 +132,9 @@ export default function Footer() {
         <div className="h-[2px] bg-gradient-to-r from-[#F97316] to-[#FBBF24] mb-8"></div>
 
         {/* Bottom Bar */}
-        <div className="text-center text-sm text-[#9CA3AF]" style={{ fontFamily: 'Inter' }}>
-          © 2025 Sonido Cárdenas — Producciones y Eventos. Todos los derechos reservados. | Popayán & Cali, Colombia
+        <div className="text-center text-xs sm:text-sm text-[#9CA3AF] space-y-1" style={{ fontFamily: 'Inter' }}>
+          <p>© 2025 Sonido Cárdenas — Producciones y Eventos. Todos los derechos reservados.</p>
+          <p>Popayán & Cali, Colombia</p>
         </div>
       </div>
     </footer>

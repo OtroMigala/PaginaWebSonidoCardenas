@@ -54,7 +54,7 @@ export default function VideoGallery() {
           <div className="relative w-full max-w-4xl aspect-video bg-[#1A1A1A] rounded-lg" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setSelectedVideo(null)}
-              className="absolute -top-12 right-0 text-white hover:text-[#F97316] transition-colors"
+              className="absolute top-2 right-2 sm:-top-12 sm:right-0 z-10 w-8 h-8 sm:w-auto sm:h-auto bg-black/60 sm:bg-transparent rounded-full flex items-center justify-center text-white hover:text-[#F97316] transition-colors"
             >
               <X size={32} />
             </button>
