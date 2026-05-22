@@ -1,14 +1,22 @@
 import { useEffect, useRef } from 'react';
+import imgBodaSalon from '../../media/photos/galeria-boda-salon.jpeg';
+import imgConciertoTeatro from '../../media/photos/galeria-concierto-teatro.jpeg';
+import imgCorporativo from '../../media/photos/galeria-corporativo.jpeg';
+import imgFiestaBalile from '../../media/photos/galeria-fiesta-baile.jpeg';
+import imgQuinceanero from '../../media/photos/galeria-quinceanero-prom.jpeg';
+import imgFestivalBanda from '../../media/photos/galeria-festival-banda.jpeg';
+import imgBodaSetup from '../../media/photos/galeria-boda-setup.jpeg';
+import imgConciertoLed from '../../media/photos/galeria-concierto-led.jpeg';
 
 const eventImages = [
-  { type: 'Boda', label: 'Evento — Boda' },
-  { type: 'Concierto', label: 'Evento — Concierto' },
-  { type: 'Corporativo', label: 'Evento — Corporativo' },
-  { type: 'Fiesta', label: 'Evento — Fiesta' },
-  { type: 'Quinceañero', label: 'Evento — Quinceañero' },
-  { type: 'Festival', label: 'Evento — Festival' },
-  { type: 'Boda', label: 'Evento — Boda' },
-  { type: 'Concierto', label: 'Evento — Concierto' }
+  { type: 'Boda',        label: 'Evento — Boda',        src: imgBodaSalon },
+  { type: 'Concierto',   label: 'Evento — Concierto',   src: imgConciertoTeatro },
+  { type: 'Corporativo', label: 'Evento — Corporativo', src: imgCorporativo },
+  { type: 'Fiesta',      label: 'Evento — Fiesta',      src: imgFiestaBalile },
+  { type: 'Quinceañero', label: 'Evento — Quinceañero', src: imgQuinceanero },
+  { type: 'Festival',    label: 'Evento — Festival',    src: imgFestivalBanda },
+  { type: 'Boda',        label: 'Evento — Boda',        src: imgBodaSetup },
+  { type: 'Concierto',   label: 'Evento — Concierto',   src: imgConciertoLed },
 ];
 
 const eventCategories = [
@@ -72,19 +80,18 @@ export default function Gallery() {
           {[...eventImages, ...eventImages].map((event, index) => (
             <div
               key={index}
-              className="w-[400px] h-[250px] bg-[#1A1A1A] rounded-lg border border-[#2A2A2A] overflow-hidden group cursor-pointer flex-shrink-0"
+              className="w-[400px] h-[250px] rounded-lg border border-[#2A2A2A] overflow-hidden group cursor-pointer flex-shrink-0 relative"
             >
-              <div className="w-full h-full flex flex-col items-center justify-center text-[#2A2A2A] relative">
-                <svg className="w-16 h-16 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="text-sm">{event.label}</p>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#F97316]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <div>
-                    <p className="text-white text-xl" style={{ fontFamily: 'Bebas Neue' }}>{event.type}</p>
-                    <p className="text-[#FBBF24] text-sm" style={{ fontFamily: 'Inter' }}>Ver detalles</p>
-                  </div>
+              <img
+                src={event.src}
+                alt={event.label}
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F97316]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div>
+                  <p className="text-white text-xl" style={{ fontFamily: 'Bebas Neue' }}>{event.type}</p>
+                  <p className="text-[#FBBF24] text-sm" style={{ fontFamily: 'Inter' }}>Ver detalles</p>
                 </div>
               </div>
             </div>

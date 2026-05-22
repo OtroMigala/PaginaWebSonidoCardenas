@@ -1,10 +1,26 @@
 import { useState } from 'react';
-import { Smartphone, User, MessageCircle } from 'lucide-react';
+import { Smartphone, User, MessageCircle, Loader2 } from 'lucide-react';
 
 const socialLinks = {
   facebook: 'FACEBOOK_URL',
   instagram: 'INSTAGRAM_URL',
   tiktok: 'TIKTOK_URL'
+};
+
+const EVENT_TYPE_LABELS: Record<string, string> = {
+  boda: 'Boda',
+  quinceanero: 'Quinceañero',
+  corporativo: 'Evento corporativo',
+  concierto: 'Concierto',
+  fiesta: 'Fiesta privada',
+  festival: 'Festival',
+  otro: 'Otro',
+};
+
+const CITY_LABELS: Record<string, string> = {
+  popayan: 'Popayán',
+  cali: 'Cali',
+  otra: 'Otra',
 };
 
 export default function ContactQuote() {
@@ -18,10 +34,10 @@ export default function ContactQuote() {
     city: '',
     description: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<string[]>([]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newErrors: string[] = [];
     if (!formData.name) newErrors.push('name');
     if (!formData.email) newErrors.push('email');
@@ -35,7 +51,36 @@ export default function ContactQuote() {
     }
 
     setErrors([]);
-    setIsSubmitted(true);
+    setStatus('loading');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `Cotización de evento — ${EVENT_TYPE_LABELS[formData.eventType] ?? formData.eventType}`,
+          from_name: formData.name,
+          Nombre: formData.name,
+          Empresa: formData.company || '—',
+          Email: formData.email,
+          Teléfono: formData.phone,
+          'Tipo de evento': EVENT_TYPE_LABELS[formData.eventType] || formData.eventType,
+          'Fecha aproximada': formData.eventDate || '—',
+          Ciudad: CITY_LABELS[formData.city] || formData.city || '—',
+          Descripción: formData.description,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -87,7 +132,7 @@ export default function ContactQuote() {
             </div>
 
             <a
-              href="https://wa.me/573145483972?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
+              href="https://api.whatsapp.com/send?phone=573145483972&text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white text-center py-4 rounded-lg font-semibold hover:bg-[#20BD5A] transition-all hover:scale-105 mb-8"
@@ -121,7 +166,21 @@ export default function ContactQuote() {
 
           {/* Right: Quote Form */}
           <div className="bg-[#1A1A1A] p-8 rounded-lg border-t-4 border-[#F97316]">
-            {!isSubmitted ? (
+            {status === 'success' ? (
+              <div className="text-center py-12">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#F97316] to-[#FBBF24] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl text-[#F8FAFC] mb-3" style={{ fontFamily: 'Bebas Neue' }}>
+                  ¡Solicitud enviada!
+                </h3>
+                <p className="text-[#9CA3AF] text-lg" style={{ fontFamily: 'Inter' }}>
+                  Fabián revisará tu cotización y te contactará pronto.
+                </p>
+              </div>
+            ) : (
               <>
                 <h3 className="text-2xl text-[#F8FAFC] mb-2" style={{ fontFamily: 'Bebas Neue' }}>
                   Cotización Empresarial
@@ -131,119 +190,101 @@ export default function ContactQuote() {
                 </p>
 
                 <div className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Nombre completo *"
-                      value={formData.name}
-                      onChange={(e) => handleChange('name', e.target.value)}
-                      className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('name') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Empresa / Organización"
-                      value={formData.company}
-                      onChange={(e) => handleChange('company', e.target.value)}
-                      className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Correo electrónico *"
-                      value={formData.email}
-                      onChange={(e) => handleChange('email', e.target.value)}
-                      className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('email') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      placeholder="Teléfono *"
-                      value={formData.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
-                      className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('phone') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <div>
-                    <select
-                      value={formData.eventType}
-                      onChange={(e) => handleChange('eventType', e.target.value)}
-                      className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('eventType') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
-                      style={{ fontFamily: 'Inter' }}
-                    >
-                      <option value="">Tipo de evento *</option>
-                      <option value="boda">Boda</option>
-                      <option value="quinceanero">Quinceañero</option>
-                      <option value="corporativo">Evento corporativo</option>
-                      <option value="concierto">Concierto</option>
-                      <option value="fiesta">Fiesta privada</option>
-                      <option value="festival">Festival</option>
-                      <option value="otro">Otro</option>
-                    </select>
-                  </div>
-                  <div>
-                    <input
-                      type="month"
-                      placeholder="Fecha aproximada del evento"
-                      value={formData.eventDate}
-                      onChange={(e) => handleChange('eventDate', e.target.value)}
-                      className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <div>
-                    <select
-                      value={formData.city}
-                      onChange={(e) => handleChange('city', e.target.value)}
-                      className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
-                      style={{ fontFamily: 'Inter' }}
-                    >
-                      <option value="">Ciudad</option>
-                      <option value="popayan">Popayán</option>
-                      <option value="cali">Cali</option>
-                      <option value="otra">Otra</option>
-                    </select>
-                  </div>
-                  <div>
-                    <textarea
-                      placeholder="Descripción del evento y servicios requeridos *"
-                      rows={4}
-                      value={formData.description}
-                      onChange={(e) => handleChange('description', e.target.value)}
-                      className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('description') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none resize-none`}
-                      style={{ fontFamily: 'Inter' }}
-                    />
-                  </div>
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] py-4 rounded-lg font-semibold hover:scale-105 transition-transform"
+                  <input
+                    type="text"
+                    placeholder="Nombre completo *"
+                    value={formData.name}
+                    onChange={(e) => handleChange('name', e.target.value)}
+                    className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('name') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
+                    style={{ fontFamily: 'Inter' }}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Empresa / Organización"
+                    value={formData.company}
+                    onChange={(e) => handleChange('company', e.target.value)}
+                    className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
+                    style={{ fontFamily: 'Inter' }}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Correo electrónico *"
+                    value={formData.email}
+                    onChange={(e) => handleChange('email', e.target.value)}
+                    className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('email') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
+                    style={{ fontFamily: 'Inter' }}
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Teléfono *"
+                    value={formData.phone}
+                    onChange={(e) => handleChange('phone', e.target.value)}
+                    className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('phone') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
+                    style={{ fontFamily: 'Inter' }}
+                  />
+                  <select
+                    value={formData.eventType}
+                    onChange={(e) => handleChange('eventType', e.target.value)}
+                    className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('eventType') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none`}
                     style={{ fontFamily: 'Inter' }}
                   >
-                    Enviar Solicitud de Cotización
+                    <option value="">Tipo de evento *</option>
+                    <option value="boda">Boda</option>
+                    <option value="quinceanero">Quinceañero</option>
+                    <option value="corporativo">Evento corporativo</option>
+                    <option value="concierto">Concierto</option>
+                    <option value="fiesta">Fiesta privada</option>
+                    <option value="festival">Festival</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <input
+                    type="month"
+                    placeholder="Fecha aproximada del evento"
+                    value={formData.eventDate}
+                    onChange={(e) => handleChange('eventDate', e.target.value)}
+                    className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
+                    style={{ fontFamily: 'Inter' }}
+                  />
+                  <select
+                    value={formData.city}
+                    onChange={(e) => handleChange('city', e.target.value)}
+                    className="w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border border-[#2A2A2A] focus:border-[#F97316] outline-none"
+                    style={{ fontFamily: 'Inter' }}
+                  >
+                    <option value="">Ciudad</option>
+                    <option value="popayan">Popayán</option>
+                    <option value="cali">Cali</option>
+                    <option value="otra">Otra</option>
+                  </select>
+                  <textarea
+                    placeholder="Descripción del evento y servicios requeridos *"
+                    rows={4}
+                    value={formData.description}
+                    onChange={(e) => handleChange('description', e.target.value)}
+                    className={`w-full bg-[#0D0D0D] text-[#F8FAFC] px-4 py-3 rounded-lg border ${errors.includes('description') ? 'border-[#F97316]' : 'border-[#2A2A2A]'} focus:border-[#F97316] outline-none resize-none`}
+                    style={{ fontFamily: 'Inter' }}
+                  />
+
+                  {status === 'error' && (
+                    <p className="text-[#F97316] text-sm text-center" style={{ fontFamily: 'Inter' }}>
+                      Hubo un error al enviar. Intenta de nuevo o contáctanos por WhatsApp.
+                    </p>
+                  )}
+
+                  <button
+                    onClick={handleSubmit}
+                    disabled={status === 'loading'}
+                    className="w-full bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] py-4 rounded-lg font-semibold hover:scale-105 transition-transform disabled:opacity-70 disabled:scale-100 flex items-center justify-center gap-2"
+                    style={{ fontFamily: 'Inter' }}
+                  >
+                    {status === 'loading' ? (
+                      <><Loader2 className="w-5 h-5 animate-spin" /> Enviando...</>
+                    ) : (
+                      'Enviar Solicitud de Cotización'
+                    )}
                   </button>
                 </div>
               </>
-            ) : (
-              <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#F97316] to-[#FBBF24] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl text-[#F8FAFC] mb-3" style={{ fontFamily: 'Bebas Neue' }}>
-                  ¡Gracias!
-                </h3>
-                <p className="text-[#9CA3AF] text-lg" style={{ fontFamily: 'Inter' }}>
-                  Fabián te contactará pronto.
-                </p>
-              </div>
             )}
           </div>
         </div>

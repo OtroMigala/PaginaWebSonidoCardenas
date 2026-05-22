@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, MessageCircle, Mic, MapPin, Star } from 'lucide-react';
+import heroBg from '../../media/photos/hero-fondo-festival.jpeg';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,15 +19,9 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 sm:py-0">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/60 via-[#0D0D0D]/80 to-[#0D0D0D]/95">
-        <div className="absolute inset-0 bg-[#0D0D0D]">
-          {/* Placeholder for background image */}
-          <div className="w-full h-full flex items-center justify-center text-[#2A2A2A]">
-            <svg className="w-32 h-32 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-            </svg>
-          </div>
-        </div>
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover object-center" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-[#0D0D0D]/65 to-[#0D0D0D]/80" />
       </div>
 
       {/* Watermark - hidden on mobile to avoid content overlap */}
