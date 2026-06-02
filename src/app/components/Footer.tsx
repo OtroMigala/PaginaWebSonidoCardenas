@@ -98,7 +98,7 @@ export default function Footer() {
                 <span className="text-[#F8FAFC]">Contacto:</span> Fabián Cárdenas
               </li>
               <li className="text-[#9CA3AF]">
-                <span className="text-[#F8FAFC]">Email:</span> PLACEHOLDER_EMAIL
+                <span className="text-[#F8FAFC]">Email:</span> fabian_cardenas@outlook.com
               </li>
               <li className="text-[#9CA3AF] mt-4">
                 <span className="text-[#F8FAFC]">Ubicaciones:</span>
