@@ -15,7 +15,7 @@ const socialLinks = {
   facebook: 'FACEBOOK_URL',
   instagram: 'INSTAGRAM_URL',
   tiktok: 'TIKTOK_URL',
-  whatsapp: 'https://wa.me/573145483972'
+  whatsapp: 'https://wa.me/573183151724'
 };
 
 export default function Footer() {
@@ -92,7 +92,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-sm" style={{ fontFamily: 'Inter' }}>
               <li className="text-[#9CA3AF]">
-                <span className="text-[#F8FAFC]">WhatsApp:</span> 3145483972
+                <span className="text-[#F8FAFC]">WhatsApp:</span> 3183151724
               </li>
               <li className="text-[#9CA3AF]">
                 <span className="text-[#F8FAFC]">Contacto:</span> Fabián Cárdenas

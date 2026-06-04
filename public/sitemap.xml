@@ -1,9 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sonidocardenas.com/</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-boda-salon-sonido-cardenas-popayan.jpg</image:loc>
+      <image:title>Sonido para bodas en salón — Sonido Cárdenas Popayán</image:title>
+      <image:caption>Amplificación y DJ profesional para bodas en salones de Popayán y Cali. Sonido Cárdenas, más de 500 eventos realizados.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-concierto-teatro-amplificacion-popayan.jpg</image:loc>
+      <image:title>Concierto en teatro con amplificación profesional — Popayán</image:title>
+      <image:caption>Sistema de sonido profesional para conciertos y presentaciones en teatro. Sonido Cárdenas, Popayán.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-corporativo-sonido-profesional-popayan.jpg</image:loc>
+      <image:title>Sonido para eventos corporativos — Popayán y Cali</image:title>
+      <image:caption>Amplificación, pantallas y producción integral para eventos empresariales y corporativos. Sonido Cárdenas.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-fiesta-baile-dj-popayan.jpg</image:loc>
+      <image:title>DJ y sonido para fiestas en Popayán — Sonido Cárdenas</image:title>
+      <image:caption>DJ profesional, luces y amplificación para fiestas privadas y animación en Popayán y Cali.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-quinceanero-luces-dj-popayan.jpg</image:loc>
+      <image:title>Quinceañero con luces y DJ en Popayán — Sonido Cárdenas</image:title>
+      <image:caption>Producción de luces, efectos especiales y DJ para quinceañeros en Popayán. Sonido Cárdenas Producciones.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-festival-banda-amplificacion-cardenas.jpg</image:loc>
+      <image:title>Festival con banda en vivo — Amplificación Sonido Cárdenas</image:title>
+      <image:caption>Amplificación de alta potencia para festivales y bandas en vivo en el Cauca y Valle del Cauca. Sonido Cárdenas.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-boda-setup-sonido-cali.jpg</image:loc>
+      <image:title>Setup de sonido para boda en Cali — Sonido Cárdenas</image:title>
+      <image:caption>Instalación y producción de sonido para bodas en Cali y Popayán. Equipo profesional de Sonido Cárdenas.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://sonidocardenas.com/images/eventos-concierto-pantalla-led-sonido-cardenas.jpg</image:loc>
+      <image:title>Concierto con pantalla LED — Sonido Cárdenas Popayán</image:title>
+      <image:caption>Pantallas LED, estructuras y amplificación para conciertos y grandes eventos. Sonido Cárdenas, Popayán.</image:caption>
+    </image:image>
+
   </url>
 </urlset>

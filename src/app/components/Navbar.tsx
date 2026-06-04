@@ -75,7 +75,7 @@ export default function Navbar() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/573145483972?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
+              href="https://wa.me/573183151724?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-lg hover:bg-[#20BD5A] transition-all hover:scale-105"
@@ -113,7 +113,7 @@ export default function Navbar() {
               </button>
             ))}
             <a
-              href="https://wa.me/573145483972?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
+              href="https://wa.me/573183151724?text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-lg text-lg"

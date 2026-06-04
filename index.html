@@ -21,8 +21,11 @@
     <meta property="og:url" content="https://sonidocardenas.com/" />
     <meta property="og:title" content="Sonido Cárdenas | Amplificación, Luces y DJ — Popayán y Cali" />
     <meta property="og:description" content="Amplificación profesional, luces, DJ, pantallas LED y organización integral de eventos en Popayán y Cali. +500 eventos realizados." />
-    <meta property="og:image" content="https://sonidocardenas.com/og-image.png" />
-    <meta property="og:image:alt" content="Sonido Cárdenas — Producciones y Eventos en Popayán" />
+    <meta property="og:image" content="https://sonidocardenas.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Sonido Cárdenas — Festival en vivo con amplificación profesional en Popayán" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content="Sonido Cárdenas" />
 
@@ -30,7 +33,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sonido Cárdenas | Amplificación, Luces y DJ — Popayán y Cali" />
     <meta name="twitter:description" content="Amplificación profesional, luces, DJ, pantallas LED y organización integral de eventos en Popayán y Cali." />
-    <meta name="twitter:image" content="https://sonidocardenas.com/og-image.png" />
+    <meta name="twitter:image" content="https://sonidocardenas.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Sonido Cárdenas — Festival en vivo con amplificación profesional en Popayán" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -43,39 +47,177 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Sonido Cárdenas",
-      "alternateName": "Sonido Cardenas Producciones y Eventos",
-      "description": "Amplificación profesional, luces, DJ, pantallas LED y organización integral de eventos en Popayán y Cali. Más de 500 eventos realizados.",
-      "url": "https://sonidocardenas.com",
-      "telephone": "+573145483972",
-      "email": "fabian_cardenas@outlook.com",
-      "image": "https://sonidocardenas.com/og-image.png",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Popayán",
-        "addressRegion": "Cauca",
-        "addressCountry": "CO"
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Popayán" },
-        { "@type": "City", "name": "Cali" }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servicios de Sonido y Eventos",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Orquestas", "description": "Equipos de alta potencia para orquestas y bandas en vivo" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Eventos", "description": "Cobertura de sonido profesional para cualquier tipo de evento" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Animación de Fiestas", "description": "Animadores y música para que tu fiesta no pare" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Organización de Eventos", "description": "Coordinación integral desde la planeación hasta el cierre" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Músicos", "description": "Backline y monitoreo profesional para artistas y grupos" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luces y Efectos Especiales", "description": "Estructuras de luces, humo, lasers y efectos escénicos" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DJ Profesional", "description": "Sets musicales para todo tipo de eventos y audiencias" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pantallas LED y Estructuras", "description": "Pantallas LED, tarimas y estructuras para grandes producciones" } }
-        ]
-      }
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://sonidocardenas.com/#business",
+          "name": "Sonido Cárdenas",
+          "alternateName": "Sonido Cardenas Producciones y Eventos",
+          "description": "Amplificación profesional, luces, DJ, pantallas LED y organización integral de eventos en Popayán y Cali. Más de 500 eventos realizados.",
+          "url": "https://sonidocardenas.com",
+          "telephone": "+573183151724",
+          "email": "fabian_cardenas@outlook.com",
+          "priceRange": "$$",
+          "image": [
+            "https://sonidocardenas.com/og-image.jpg",
+            "https://sonidocardenas.com/images/eventos-boda-salon-sonido-cardenas-popayan.jpg",
+            "https://sonidocardenas.com/images/eventos-concierto-teatro-amplificacion-popayan.jpg",
+            "https://sonidocardenas.com/images/eventos-corporativo-sonido-profesional-popayan.jpg",
+            "https://sonidocardenas.com/images/eventos-fiesta-baile-dj-popayan.jpg",
+            "https://sonidocardenas.com/images/eventos-quinceanero-luces-dj-popayan.jpg",
+            "https://sonidocardenas.com/images/eventos-festival-banda-amplificacion-cardenas.jpg",
+            "https://sonidocardenas.com/images/eventos-boda-setup-sonido-cali.jpg",
+            "https://sonidocardenas.com/images/eventos-concierto-pantalla-led-sonido-cardenas.jpg"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Popayán",
+            "addressRegion": "Cauca",
+            "addressCountry": "CO"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Popayán" },
+            { "@type": "City", "name": "Cali" }
+          ],
+          "sameAs": [
+            "https://wa.me/573183151724"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Sonido y Eventos",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Orquestas", "description": "Equipos de alta potencia para orquestas y bandas en vivo en Popayán y Cali" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Eventos", "description": "Cobertura de sonido profesional para cualquier tipo de evento en el Cauca" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Animación de Fiestas", "description": "Animadores y música para que tu fiesta no pare en Popayán" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Organización de Eventos", "description": "Coordinación integral desde la planeación hasta el cierre del evento" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Amplificación para Músicos", "description": "Backline y monitoreo profesional para artistas y grupos musicales" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luces y Efectos Especiales", "description": "Estructuras de luces, humo, lasers y efectos escénicos para eventos" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DJ Profesional", "description": "Sets musicales para todo tipo de eventos y audiencias en Popayán y Cali" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pantallas LED y Estructuras", "description": "Pantallas LED, tarimas y estructuras para grandes producciones en Colombia" } }
+            ]
+          }
+        },
+        {
+          "@type": "ImageGallery",
+          "@id": "https://sonidocardenas.com/#gallery",
+          "name": "Galería de eventos — Sonido Cárdenas",
+          "description": "Fotos de eventos realizados por Sonido Cárdenas: bodas, conciertos, festivales, quinceañeros, eventos corporativos en Popayán y Cali.",
+          "author": { "@id": "https://sonidocardenas.com/#business" },
+          "associatedMedia": [
+            {
+              "@type": "ImageObject",
+              "name": "Sonido para boda en salón — Popayán",
+              "description": "Amplificación y DJ profesional para boda en salón de eventos en Popayán",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-boda-salon-sonido-cardenas-popayan.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-boda-salon-sonido-cardenas-popayan.jpg",
+              "keywords": "sonido bodas popayan, amplificacion boda, dj boda cauca"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Concierto en teatro con amplificación profesional — Popayán",
+              "description": "Sistema de sonido de alta calidad para concierto en teatro en Popayán, Cauca",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-concierto-teatro-amplificacion-popayan.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-concierto-teatro-amplificacion-popayan.jpg",
+              "keywords": "concierto teatro popayan, sonido teatro cauca, amplificacion concierto"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Evento corporativo con sonido profesional — Popayán",
+              "description": "Producción audiovisual y sonido para evento empresarial en Popayán",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-corporativo-sonido-profesional-popayan.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-corporativo-sonido-profesional-popayan.jpg",
+              "keywords": "evento corporativo popayan, sonido empresarial cauca, produccion eventos"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "DJ y fiesta bailable en Popayán — Sonido Cárdenas",
+              "description": "DJ profesional con luces para fiesta privada y baile en Popayán",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-fiesta-baile-dj-popayan.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-fiesta-baile-dj-popayan.jpg",
+              "keywords": "dj popayan, fiesta privada popayan, sonido fiesta cauca"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Quinceañero con luces y DJ — Popayán",
+              "description": "Producción de luces LED, efectos y DJ para quinceañero en Popayán",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-quinceanero-luces-dj-popayan.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-quinceanero-luces-dj-popayan.jpg",
+              "keywords": "quinceanero popayan, luces quinceanero, dj quinceanero cauca"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Festival de música con banda en vivo — Sonido Cárdenas",
+              "description": "Amplificación de alta potencia para festival con banda en vivo en el Cauca",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-festival-banda-amplificacion-cardenas.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-festival-banda-amplificacion-cardenas.jpg",
+              "keywords": "festival musica cauca, amplificacion festival popayan, sonido banda vivo"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Setup de sonido para boda en Cali — Sonido Cárdenas",
+              "description": "Instalación y producción de sonido profesional para boda en Cali, Valle del Cauca",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-boda-setup-sonido-cali.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-boda-setup-sonido-cali.jpg",
+              "keywords": "sonido bodas cali, amplificacion boda cali, produccion eventos cali"
+            },
+            {
+              "@type": "ImageObject",
+              "name": "Concierto con pantalla LED — Sonido Cárdenas Popayán",
+              "description": "Pantalla LED de gran formato y sonido profesional para concierto en Popayán",
+              "contentUrl": "https://sonidocardenas.com/images/eventos-concierto-pantalla-led-sonido-cardenas.jpg",
+              "thumbnailUrl": "https://sonidocardenas.com/images/eventos-concierto-pantalla-led-sonido-cardenas.jpg",
+              "keywords": "pantalla led popayan, concierto led cauca, sonido cardenas popayan"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://sonidocardenas.com/#website",
+          "url": "https://sonidocardenas.com",
+          "name": "Sonido Cárdenas",
+          "description": "Amplificación profesional, luces, DJ y organización de eventos en Popayán y Cali",
+          "publisher": { "@id": "https://sonidocardenas.com/#business" },
+          "inLanguage": "es-CO"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://sonidocardenas.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿En qué ciudades trabaja Sonido Cárdenas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sonido Cárdenas trabaja principalmente en Popayán (Cauca) y Cali (Valle del Cauca), aunque puede desplazarse a otras ciudades del suroccidente colombiano."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué servicios ofrece Sonido Cárdenas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sonido Cárdenas ofrece amplificación profesional para orquestas y eventos, animación de fiestas, organización integral de eventos, DJ profesional, luces y efectos especiales, pantallas LED y estructuras de tarima."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo puedo cotizar un evento con Sonido Cárdenas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Puedes contactar a Fabián Cárdenas directamente por WhatsApp al 3183151724 o escribir al correo fabian_cardenas@outlook.com para recibir una cotización personalizada sin costo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuántos eventos ha realizado Sonido Cárdenas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sonido Cárdenas cuenta con más de 500 eventos realizados, incluyendo bodas, quinceañeros, conciertos, festivales, eventos corporativos y fiestas privadas en Popayán, Cali y otras ciudades del Cauca."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 

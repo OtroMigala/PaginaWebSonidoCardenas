@@ -9,14 +9,14 @@ import imgBodaSetup from '../../media/photos/galeria-boda-setup.jpeg';
 import imgConciertoLed from '../../media/photos/galeria-concierto-led.jpeg';
 
 const eventImages = [
-  { type: 'Boda',        label: 'Evento — Boda',        src: imgBodaSalon },
-  { type: 'Concierto',   label: 'Evento — Concierto',   src: imgConciertoTeatro },
-  { type: 'Corporativo', label: 'Evento — Corporativo', src: imgCorporativo },
-  { type: 'Fiesta',      label: 'Evento — Fiesta',      src: imgFiestaBalile },
-  { type: 'Quinceañero', label: 'Evento — Quinceañero', src: imgQuinceanero },
-  { type: 'Festival',    label: 'Evento — Festival',    src: imgFestivalBanda },
-  { type: 'Boda',        label: 'Evento — Boda',        src: imgBodaSetup },
-  { type: 'Concierto',   label: 'Evento — Concierto',   src: imgConciertoLed },
+  { type: 'Boda',        label: 'Amplificación y DJ para boda en salón — Sonido Cárdenas Popayán',              src: imgBodaSalon },
+  { type: 'Concierto',   label: 'Sonido profesional para concierto en teatro — Popayán, Cauca',                 src: imgConciertoTeatro },
+  { type: 'Corporativo', label: 'Producción audiovisual para evento corporativo — Sonido Cárdenas Popayán',     src: imgCorporativo },
+  { type: 'Fiesta',      label: 'DJ y sonido para fiesta privada en Popayán — Sonido Cárdenas',                 src: imgFiestaBalile },
+  { type: 'Quinceañero', label: 'Luces LED y DJ para quinceañero en Popayán — Sonido Cárdenas',                 src: imgQuinceanero },
+  { type: 'Festival',    label: 'Amplificación para festival con banda en vivo — Cauca, Colombia',              src: imgFestivalBanda },
+  { type: 'Boda',        label: 'Setup de sonido para boda en Cali — Sonido Cárdenas Producciones',             src: imgBodaSetup },
+  { type: 'Concierto',   label: 'Pantalla LED y amplificación para concierto — Sonido Cárdenas Popayán',        src: imgConciertoLed },
 ];
 
 const eventCategories = [
@@ -85,6 +85,8 @@ export default function Gallery() {
               <img
                 src={event.src}
                 alt={event.label}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D]/80 via-transparent to-transparent" />

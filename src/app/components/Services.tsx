@@ -125,7 +125,7 @@ export default function Services() {
             ¿Necesitas varios servicios para tu evento?
           </p>
           <a
-            href="https://wa.me/573145483972?text=Hola%20Fabián,%20necesito%20un%20paquete%20personalizado%20para%20mi%20evento"
+            href="https://wa.me/573183151724?text=Hola%20Fabián,%20necesito%20un%20paquete%20personalizado%20para%20mi%20evento"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-transform whitespace-nowrap"

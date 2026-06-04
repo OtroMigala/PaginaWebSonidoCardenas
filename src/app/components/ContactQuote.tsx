@@ -117,7 +117,7 @@ export default function ContactQuote() {
                 </div>
                 <div>
                   <p className="text-sm text-[#9CA3AF]" style={{ fontFamily: 'Inter' }}>WhatsApp</p>
-                  <p className="text-lg" style={{ fontFamily: 'Inter' }}>3145483972</p>
+                  <p className="text-lg" style={{ fontFamily: 'Inter' }}>3183151724</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-[#F8FAFC]">
@@ -132,7 +132,7 @@ export default function ContactQuote() {
             </div>
 
             <a
-              href="https://api.whatsapp.com/send?phone=573145483972&text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
+              href="https://api.whatsapp.com/send?phone=573183151724&text=Hola%20Fabián,%20me%20interesa%20cotizar%20un%20evento"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white text-center py-4 rounded-lg font-semibold hover:bg-[#20BD5A] transition-all hover:scale-105 mb-8"
