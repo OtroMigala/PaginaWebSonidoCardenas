@@ -6,7 +6,7 @@ import videoFestival from '../../media/videos/video-festival-ron-caldas.mp4';
 import videoReciente from '../../media/videos/video-evento-reciente.mp4';
 import posterConcierto from '../../media/photos/video-poster-concierto-grande.jpeg';
 import posterBandaRock from '../../media/photos/video-poster-banda-rock.jpeg';
-import posterFestival from '../../media/photos/video-poster-festival-caldas.jpeg';
+import posterFestival from '../../media/photos/galeria-festival-banda.jpeg';
 import posterMasivo from '../../media/photos/video-poster-evento-masivo.jpeg';
 
 const videos = [
