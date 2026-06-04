@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logoSonido from '../../media/Logos/LogoSonido.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,17 +56,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('hero')}>
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F97316] to-[#FBBF24] p-[2px]">
-                <div className="w-full h-full rounded-full bg-[#0D0D0D] flex items-center justify-center">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Bebas Neue' }}>S</span>
-                </div>
-              </div>
-              <div>
-                <div className="text-xl font-bold bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Bebas Neue' }}>
-                  SONIDO CÁRDENAS
-                </div>
-                <div className="text-xs text-[#9CA3AF]" style={{ fontFamily: 'Inter' }}>Producciones y Eventos</div>
-              </div>
+              <img src={logoSonido} alt="Sonido Cárdenas" className="h-14 w-auto object-contain" />
             </div>
 
             {/* Desktop Navigation */}

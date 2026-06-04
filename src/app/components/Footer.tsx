@@ -1,3 +1,5 @@
+import logoSonido from '../../media/Logos/LogoSonido.png';
+
 const services = [
   'Amplificación para Orquestas',
   'Amplificación para Eventos',
@@ -30,9 +32,7 @@ export default function Footer() {
         {/* Top Section */}
         <div className="flex flex-col md:flex-row items-center justify-between pb-12 mb-12 border-b border-[#2A2A2A]">
           <div className="mb-6 md:mb-0 text-center md:text-left">
-            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent" style={{ fontFamily: 'Bebas Neue' }}>
-              SONIDO CÁRDENAS
-            </div>
+            <img src={logoSonido} alt="Sonido Cárdenas" className="h-20 w-auto object-contain mb-3 mx-auto md:mx-0" />
             <p className="text-[#9CA3AF] italic" style={{ fontFamily: 'Inter' }}>
               Más que un servicio, una experiencia memorable
             </p>

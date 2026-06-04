@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, MessageCircle, Mic, MapPin, Star } from 'lucide-react';
 import heroBg from '../../media/photos/hero-fondo-festival.jpeg';
+import logoSonido from '../../media/Logos/LogoSonido.png';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +26,8 @@ export default function Hero() {
       </div>
 
       {/* Watermark - hidden on mobile to avoid content overlap */}
-      <div className="hidden sm:block absolute top-20 left-10 text-[200px] font-bold opacity-5 bg-gradient-to-r from-[#F97316] to-[#FBBF24] bg-clip-text text-transparent select-none" style={{ fontFamily: 'Bebas Neue' }}>
-        S
+      <div className="hidden sm:block absolute top-16 right-10 opacity-10 select-none pointer-events-none">
+        <img src={logoSonido} alt="" aria-hidden="true" className="h-72 w-auto object-contain" />
       </div>
 
       {/* Content */}
