@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Smartphone, User, MessageCircle, Loader2 } from 'lucide-react';
+import { Smartphone, User, MessageCircle, Mail } from 'lucide-react';
 
 const socialLinks = {
   facebook: 'FACEBOOK_URL',
@@ -34,10 +34,10 @@ export default function ContactQuote() {
     city: '',
     description: ''
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const newErrors: string[] = [];
     if (!formData.name) newErrors.push('name');
     if (!formData.email) newErrors.push('email');
@@ -51,36 +51,30 @@ export default function ContactQuote() {
     }
 
     setErrors([]);
-    setStatus('loading');
 
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-          subject: `Cotización de evento — ${EVENT_TYPE_LABELS[formData.eventType] ?? formData.eventType}`,
-          from_name: formData.name,
-          Nombre: formData.name,
-          Empresa: formData.company || '—',
-          Email: formData.email,
-          Teléfono: formData.phone,
-          'Tipo de evento': EVENT_TYPE_LABELS[formData.eventType] || formData.eventType,
-          'Fecha aproximada': formData.eventDate || '—',
-          Ciudad: CITY_LABELS[formData.city] || formData.city || '—',
-          Descripción: formData.description,
-        }),
-      });
+    const subject = `Cotización de evento — ${EVENT_TYPE_LABELS[formData.eventType] ?? formData.eventType}`;
 
-      const data = await res.json();
-      if (data.success) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    const bodyLines = [
+      'Hola Fabián, te envío una solicitud de cotización con los siguientes datos:',
+      '',
+      `Nombre: ${formData.name}`,
+      formData.company ? `Empresa: ${formData.company}` : '',
+      `Correo de contacto: ${formData.email}`,
+      `Teléfono: ${formData.phone}`,
+      `Tipo de evento: ${EVENT_TYPE_LABELS[formData.eventType] || formData.eventType}`,
+      formData.eventDate ? `Fecha aproximada: ${formData.eventDate}` : '',
+      formData.city ? `Ciudad: ${CITY_LABELS[formData.city] || formData.city}` : '',
+      '',
+      'Descripción:',
+      formData.description,
+      '',
+      '---',
+      'Solicitud enviada desde sonidocardenas.com',
+    ].filter(Boolean).join('\n');
+
+    const mailto = `mailto:fabian_cardenas@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`;
+    window.location.href = mailto;
+    setSent(true);
   };
 
   const handleChange = (field: string, value: string) => {
@@ -166,19 +160,27 @@ export default function ContactQuote() {
 
           {/* Right: Quote Form */}
           <div className="bg-[#1A1A1A] p-8 rounded-lg border-t-4 border-[#F97316]">
-            {status === 'success' ? (
+            {sent ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 bg-gradient-to-br from-[#F97316] to-[#FBBF24] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10 text-[#0D0D0D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <Mail className="w-10 h-10 text-[#0D0D0D]" />
                 </div>
                 <h3 className="text-2xl text-[#F8FAFC] mb-3" style={{ fontFamily: 'Bebas Neue' }}>
-                  ¡Solicitud enviada!
+                  ¡Tu correo está listo!
                 </h3>
-                <p className="text-[#9CA3AF] text-lg" style={{ fontFamily: 'Inter' }}>
-                  Fabián revisará tu cotización y te contactará pronto.
+                <p className="text-[#9CA3AF] mb-2" style={{ fontFamily: 'Inter' }}>
+                  Se abrió tu cliente de correo con el mensaje pre-llenado.
                 </p>
+                <p className="text-[#9CA3AF] text-sm" style={{ fontFamily: 'Inter' }}>
+                  Solo revísalo y presiona <span className="text-[#F8FAFC]">Enviar</span> desde tu app de correo.
+                </p>
+                <button
+                  onClick={() => setSent(false)}
+                  className="mt-8 text-sm text-[#F97316] hover:underline"
+                  style={{ fontFamily: 'Inter' }}
+                >
+                  Modificar datos y volver a abrir
+                </button>
               </div>
             ) : (
               <>
@@ -265,24 +267,23 @@ export default function ContactQuote() {
                     style={{ fontFamily: 'Inter' }}
                   />
 
-                  {status === 'error' && (
+                  {errors.length > 0 && (
                     <p className="text-[#F97316] text-sm text-center" style={{ fontFamily: 'Inter' }}>
-                      Hubo un error al enviar. Intenta de nuevo o contáctanos por WhatsApp.
+                      Por favor completa todos los campos obligatorios (*).
                     </p>
                   )}
 
                   <button
                     onClick={handleSubmit}
-                    disabled={status === 'loading'}
-                    className="w-full bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] py-4 rounded-lg font-semibold hover:scale-105 transition-transform disabled:opacity-70 disabled:scale-100 flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[#0D0D0D] py-4 rounded-lg font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
                     style={{ fontFamily: 'Inter' }}
                   >
-                    {status === 'loading' ? (
-                      <><Loader2 className="w-5 h-5 animate-spin" /> Enviando...</>
-                    ) : (
-                      'Enviar Solicitud de Cotización'
-                    )}
+                    <Mail className="w-5 h-5" />
+                    Enviar Cotización por Correo
                   </button>
+                  <p className="text-xs text-center text-[#6B7280]" style={{ fontFamily: 'Inter' }}>
+                    Se abrirá tu app de correo (Gmail, Outlook, etc.) con el mensaje listo para enviar.
+                  </p>
                 </div>
               </>
             )}
